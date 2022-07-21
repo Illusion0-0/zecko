@@ -30,13 +30,13 @@ class App extends Component {
     const responses = await Promise.all(requests); 
     const promises = responses.map((response) => response.text());
     const texts = await Promise.all(promises);
-    console.log(texts);
+    // console.log(texts);
     results = texts.map((text) => {
       let result={};
       for(let i=0; i<categories.length; i++){
-        if(text.includes(categories[i])==true && categories[i]!="Not found")
+        if(text.includes(categories[i])===true && categories[i]!=="Not found")
         {result = categories[i].toUpperCase();break;}
-        else if(text.includes(categories[i])==true && categories[i]=="Not found")
+        else if(text.includes(categories[i])===true && categories[i]==="Not found")
         {result = "NOT_WORKING";break;}
         else result = "OTHERS";
         
@@ -46,6 +46,7 @@ class App extends Component {
     );
     console.log(results);
     results.unshift("Category");
+    alert("We've analysed the sheet");
     // return await Promise.all(promises);
   }
 
@@ -85,6 +86,7 @@ class App extends Component {
 
       })
     })
+    alert("Sheet Updated");
   }
 
 
