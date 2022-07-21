@@ -1,25 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const SHEET_ID = process.env.SHEET_ID;
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
+var results = [];
+
+class App extends Component {
+  
+  getSheetValues = async () =>{
+    const request = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/'Pre program run'`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${ACCESS_TOKEN}`  
+    }
+    });
+
+    const data = await request.json();
+    // console.log(data.values);
+    const urls = [];
+    const categories = ["shopify", "woocommerce", "bigcommerce", "magento","Not found"];
+    data.values.forEach(row => {
+      urls.push(row[0]);
+    }
+    );
+    urls.shift();
+    // console.log(urls);
+    const requests = urls.map((url) => fetch(`https://cryptic-chamber-68777.herokuapp.com/${url}`)); 
+    const responses = await Promise.all(requests); 
+    const promises = responses.map((response) => response.text());
+    const texts = await Promise.all(promises);
+    console.log(texts);
+    results = texts.map((text) => {
+      let result={};
+      for(let i=0; i<categories.length; i++){
+        if(text.includes(categories[i])==true && categories[i]!="Not found")
+        {result = categories[i].toUpperCase();break;}
+        else if(text.includes(categories[i])==true && categories[i]=="Not found")
+        {result = "NOT_WORKING";break;}
+        else result = "OTHERS";
+        
+      }
+      return result;
+    }
+    );
+    console.log(results);
+    // console.log(texts);
+    // console.log(texts);
+    // return await Promise.all(promises);
+    // return data;
+  }
+  
+  render() {
+    return (
+      <div className="App">
+        <button onClick={this.getSheetValues}>Get sheet values</button>
+        <button onClick={this.updateSheetValues}>Update A1</button>
+      </div>
+    );
+  }
 }
 
 export default App;
