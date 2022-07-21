@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './App.css';
 
 const SHEET_ID =  process.env.REACT_APP_SHEET_ID;
 const ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN;
@@ -6,6 +7,7 @@ var results = [];
 
 class App extends Component {
   getSheetValues = async () =>{
+    console.log("We're analysing the sheet");
     const request = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/'Pre program run'`,
     {
       headers: {
@@ -43,14 +45,61 @@ class App extends Component {
     }
     );
     console.log(results);
+    results.unshift("Category");
     // return await Promise.all(promises);
   }
+
+  updateSheetValues = () => {
+    console.log("Updating sheet");
+    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}:batchUpdate`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        //update this token with yours. 
+        Authorization: `Bearer ${ACCESS_TOKEN}`,
+      },
+      body: JSON.stringify({
+
+        requests: [{
+          updateCells: {
+              "rows": results.map((result, index) => {
+                return {
+                  values: [{
+                    userEnteredValue: {
+                      stringValue: result
+                    }
+                  }]
+                }
+              }
+              ),
+              "fields": "*",
+
+              
+              "start": {
+                "sheetId": 0,
+                "rowIndex": 0,
+                "columnIndex": 1
+              }
+          }
+        }]
+
+      })
+    })
+  }
+
+
   
   render() {
     return (
       <div className="App">
-        <button onClick={this.getSheetValues}>Analyse Sheet</button>
-        <button onClick={this.updateSheetValues}>Update Sheet</button>
+        <div className="zecko">
+        <button className="btn btn-striped-shadow btn-striped-shadow--purple" onClick={this.getSheetValues}> 
+        <span>Analyse Sheet</span> 
+        </button>
+        <button className="btn btn-striped-shadow btn-striped-shadow--green" onClick={this.updateSheetValues}> 
+        <span>Update Sheet</span> 
+        </button>
+        </div>
       </div>
     );
   }

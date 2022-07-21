@@ -1,0 +1,19 @@
+.App{
+    height: 100%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.zecko{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: inherit;
+}
+
+.btn {  font-family: Arial, Helvetica, sans-serif;  text-transform: uppercase;}  .btn:hover .btn-slide-show-text1 {  margin-left: 65px;}  .btn-striped-shadow {  overflow: visible;  border: 0px;  padding: 0px;  display: inline-block;  letter-spacing: 1px;  position: relative;  transition: opacity 0.3s ease 0s, z-index 0.3s step-end 0s, transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;  z-index: 1;  background-color: rgb(250, 250, 250);  cursor: pointer;  width: 180px;  height: 48px;  line-height: 38px;}  .btn-striped-shadow span {  display: block;  position: relative;  z-index: 2;  border: 5px solid;  background: rgb(250, 250, 250);}  .btn-striped-shadow::before {  content: "";  display: block;  position: absolute;  z-index: 1;  transition: transform 0.3s ease 0s, max-height 0.3s ease 0s, width 0.3s ease 0s, -webkit-transform 0.3s ease 0s;  width: 8px;  max-height: calc(100% - 5px);  height: 100%;  left: -12px;  bottom: -5px;  background-size: 8px 15px;  background-repeat: repeat-y;  background-position: 0px 100%;}  .btn-striped-shadow::after {  width: calc(100% - 4px);  height: 8px;  left: -10px;  bottom: -9px;  background-size: 15px 8px;  background-repeat: repeat-x;}  .btn-striped-shadow:hover {  transform: translate(-12px, 12px);  z-index: 3;}  .btn-striped-shadow:hover::before {  max-height: calc(100% - 10px);  transform: translate(12px, -12px);}  .btn-striped-shadow--purple::before {  background-image: linear-gradient(135deg, transparent, transparent 5px, rgb(61, 52, 139) 0px, rgb(61, 52, 139) 10px, transparent 0px);}  .btn-striped-shadow--purple span {  border-color: rgb(61, 52, 139);  color: rgb(61, 52, 139);}  
+
+.btn {  font-family: Arial, Helvetica, sans-serif;  text-transform: uppercase;}  .btn:hover .btn-slide-show-text1 {  margin-left: 65px;}  .btn-striped-shadow {  overflow: visible;  border: 0px;  padding: 0px;  display: inline-block;  letter-spacing: 1px;  position: relative;  transition: opacity 0.3s ease 0s, z-index 0.3s step-end 0s, transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;  z-index: 1;  background-color: rgb(250, 250, 250);  cursor: pointer;  width: 180px;  height: 48px;  line-height: 38px;}  .btn-striped-shadow span {  display: block;  position: relative;  z-index: 2;  border: 5px solid;  background: rgb(250, 250, 250);}  .btn-striped-shadow::before {  content: "";  display: block;  position: absolute;  z-index: 1;  transition: transform 0.3s ease 0s, max-height 0.3s ease 0s, width 0.3s ease 0s, -webkit-transform 0.3s ease 0s;  width: 8px;  max-height: calc(100% - 5px);  height: 100%;  left: -12px;  bottom: -5px;  background-size: 8px 15px;  background-repeat: repeat-y;  background-position: 0px 100%;}  .btn-striped-shadow::after {  width: calc(100% - 4px);  height: 8px;  left: -10px;  bottom: -9px;  background-size: 15px 8px;  background-repeat: repeat-x;}  .btn-striped-shadow:hover {  transform: translate(-12px, 12px);  z-index: 3;}  .btn-striped-shadow:hover::before {  max-height: calc(100% - 10px);  transform: translate(12px, -12px);}  .btn-striped-shadow--green::before {  background-image: linear-gradient(135deg, transparent, transparent 5px, rgb(83, 187, 107) 0px, rgb(83, 187, 107) 10px, transparent 0px);}  .btn-striped-shadow--green span {  border-color: rgb(83, 187, 107);  color: rgb(83, 187, 107);}  
