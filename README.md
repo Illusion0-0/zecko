@@ -25,7 +25,9 @@ Run the APP using
 ```bash
 npm start
 ```
+<br/>
 Note: Access Token expires in a while so you may need to generate it again.
+<br/>
 Note: Re-run [npm start] after you change .env file.
 
 Thank you for visiting this repo :D
