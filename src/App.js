@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 
-const SHEET_ID = process.env.SHEET_ID;
-const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
+const SHEET_ID =  process.env.REACT_APP_SHEET_ID;
+const ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN;
 var results = [];
 
 class App extends Component {
-  
   getSheetValues = async () =>{
     const request = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/'Pre program run'`,
     {
@@ -44,17 +43,14 @@ class App extends Component {
     }
     );
     console.log(results);
-    // console.log(texts);
-    // console.log(texts);
     // return await Promise.all(promises);
-    // return data;
   }
   
   render() {
     return (
       <div className="App">
-        <button onClick={this.getSheetValues}>Get sheet values</button>
-        <button onClick={this.updateSheetValues}>Update A1</button>
+        <button onClick={this.getSheetValues}>Analyse Sheet</button>
+        <button onClick={this.updateSheetValues}>Update Sheet</button>
       </div>
     );
   }
