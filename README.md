@@ -25,5 +25,7 @@ Run the APP using
 ```bash
 npm start
 ```
-At present we can see the data in the console.
-> Soon adding feature to update the sheet as well.
+Note: Access Token expires in a while so you may need to generate it again.
+Note: Re-run [npm start] after you change .env file.
+
+Thank you for visiting this repo :D
