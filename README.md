@@ -1,4 +1,10 @@
-**Google Sheet Automation** https://github.com/Illusion0-0/zecko/blob/main/Google%20Sheets%20Automation.mp4
+**Google Sheet Automation** 
+
+
+
+https://user-images.githubusercontent.com/32845547/210397039-b7b7d569-7b61-4797-a50c-168cad1a2d41.mp4
+
+
 
 Clone the repository
 ```bash
